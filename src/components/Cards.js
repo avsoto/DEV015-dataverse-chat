@@ -26,9 +26,7 @@ export const Cards = () => {
         <div itemprop="size"><strong>Tamaño:</strong> ${pet.facts.size}</div>
         <div itemprop="temperament"><strong>Comportamiento:</strong> ${pet.facts.temperament}</div>
         <div class="content-tarjeta-button">
-        <button class="tarjeta-button">
-          <i class="fa-sharp-duotone fa-solid fa-comment fa-beat-fade fa-3x""></i>
-        </button>
+        <button class="tarjeta-button">Chatea conmigo</button>
         </div>
       </li>
     `;
