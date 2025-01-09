@@ -1134,3 +1134,26 @@ button{
   }
   }
   
+
+  /*Paginación*/
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #ff7a00;
+    color: #fff;
+    font-weight: bold;
+  }
+  
