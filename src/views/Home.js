@@ -290,18 +290,14 @@ function renderItems(pets) {
         <img class="tarjeta-img" src="${pet.imageUrl}" alt="${pet.id}">
       </div>
       <div itemprop="name">${pet.name}</div>
-      <div itemprop="description">${pet.shortDescription}</div>
-      <div itemprop="age"><strong>Edad:</strong> ${ageDisplay}</div>
-      <div itemprop="gender"><strong>Género:</strong> ${pet.facts.gender}</div>
-      <div itemprop="breed"><strong>Raza:</strong> ${pet.facts.breed}</div>
-      <div itemprop="size"><strong>Tamaño:</strong> ${pet.facts.size}</div>
-      <div itemprop="temperament"><strong>Comportamiento:</strong> ${pet.facts.temperament}</div>
+      <div itemprop="age"><i class="fa-solid fa-clock"></i><strong> Edad:</strong> ${ageDisplay}</div>
+      <div itemprop="gender"><i class="fa-solid fa-venus-mars"></i><strong> Género:</strong> ${pet.facts.gender}</div>
+      <div itemprop="breed"><i class="fa-solid fa-bone"></i><strong> Raza:</strong> ${pet.facts.breed}</div>
+      <div itemprop="size"><i class="fa-solid fa-dog"></i><strong> Tamaño:</strong> ${pet.facts.size}</div>
+      <div class="content-tarjeta-button">
+          <button class="tarjeta-button" data-id="${pet.id}">Chatea conmigo</button>
+        </div>
     </li>
-    <div class="content-tarjeta-button">
-        <button class="tarjeta-button" data-id="${pet.id}">
-          <i class="fa-sharp-duotone fa-solid fa-comment fa-beat-fade fa-3x""></i>
-        </button>
-    </div>
     `;    
     // Añadir el evento al botón
     const buttonElement = petItem.querySelector('.tarjeta-button');

@@ -26,12 +26,10 @@ export const Cards = () => {
           <img class="tarjeta-img" src="${pet.imageUrl}" alt="${pet.id}">
         </div>
         <div itemprop="name">${pet.name}</div>
-        <div itemprop="description">${pet.shortDescription}</div>
-        <div itemprop="age"><strong>Edad:</strong> ${ageDisplay}</div>
-        <div itemprop="gender"><strong>Género:</strong> ${pet.facts.gender}</div>
-        <div itemprop="breed"><strong>Raza:</strong> ${pet.facts.breed}</div>
-        <div itemprop="size"><strong>Tamaño:</strong> ${pet.facts.size}</div>
-        <div itemprop="temperament"><strong>Comportamiento:</strong> ${pet.facts.temperament}</div>
+        <div itemprop="age"><i class="fa-solid fa-clock"></i><strong> Edad:</strong> ${ageDisplay}</div>
+        <div itemprop="gender"><i class="fa-solid fa-venus-mars"></i><strong> Género:</strong> ${pet.facts.gender}</div>
+        <div itemprop="breed"><i class="fa-solid fa-bone"></i><strong> Raza:</strong> ${pet.facts.breed}</div>
+        <div itemprop="size"><i class="fa-solid fa-dog"></i><strong> Tamaño:</strong> ${pet.facts.size}</div>
         <div class="content-tarjeta-button">
           <button class="tarjeta-button">Chatea conmigo</button>
         </div>
@@ -129,7 +127,8 @@ export const Cards = () => {
       <section class="mascotas-tarjetas">
         <h2 class="nuestras-mascotas">
           <span>Our pets</span>
-          <p>All our pets come with a gift kit that includes: bath, bed, cookies, Wuf collar, ID tag, clothing, spa session, identification microchip, flea prevention, and much more!</p>
+          <p>Welcome a special friend into your life and enjoy a love-filled starter kit: a cozy bed, tasty treats, Wuf collar and microchip! 
+          <strong>Everything you need to start your new journey together!</strong></p>
           <p class="numeroAdoptados"></p>
         </h2>
         <div class="mascotas-barra">

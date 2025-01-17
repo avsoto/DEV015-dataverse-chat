@@ -383,7 +383,7 @@
   }
   
   .nuestras-mascotas p{
-    font-size: 0.3em;
+    font-size: 0.35em;
     line-height: 1em;
     margin-top: 10px;
     color: #292929;
@@ -449,7 +449,6 @@
   .ul-tarjeta{
     display: flex;
     justify-content: space-around;
-    padding-inline-start: 0;
     flex-wrap: wrap;
     }
   
@@ -500,9 +499,7 @@
     color: white; 
     border: none; 
     padding: 10px 20px; 
-    font-size: 16px;
-    font-weight: bold; 
-    border-radius: 3px;
+    font-size: 1em;
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     margin-top: 10%;
@@ -1053,7 +1050,6 @@ button{
   #root .ul-tarjeta{
     display: flex;
     justify-content: space-evenly;
-    padding-inline-start: 0;
     flex-wrap: wrap;
     }
   
@@ -1068,11 +1064,11 @@ button{
     height: auto;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     background-color: rgba(255, 255, 255, 0.8);
-    max-width: 350px;
+    max-width: 200px;
     flex-direction: column;
     padding: 20px;
-    font-size: 1.1em;
-    margin: 0 0 16px;
+    font-size: 0.8em;
+    margin: 16px;
     color: #1e1e1e;
     text-align: left;
     line-height: 1.5em;
