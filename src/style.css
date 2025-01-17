@@ -383,7 +383,7 @@
   }
   
   .nuestras-mascotas p{
-    font-size: 0.3em;
+    font-size: 0.35em;
     line-height: 1em;
     margin-top: 10px;
     color: #292929;
@@ -441,13 +441,14 @@
   /* Tarjetas contenido */
   #pets-container{
     margin-top: 40px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   
   
   .ul-tarjeta{
     display: flex;
-    justify-content: space-evenly;
-    padding-inline-start: 0;
+    justify-content: space-around;
     flex-wrap: wrap;
     }
   
@@ -462,10 +463,10 @@
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.412);
     background-color: rgba(255, 255, 255, 0.8);
-      max-width: 350px;
+      max-width: 190px;
     flex-direction: column;
     padding: 20px;
-    font-size: 1.1em;
+    font-size: 1em;
     margin: 0 0 16px;
     color: #1e1e1e;
     text-align: left;
@@ -487,13 +488,32 @@
     text-align: center;
     /*margin: 10px 40px 0 40px;*/
   }
+
+  .content-tarjeta-button{
+    display: flex;
+    justify-content: center;
+  }
+
+  .tarjeta-button {
+    background-color: rgb(248, 204, 51); 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 1em;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    margin-top: 10%;
+  }
   
+  .tarjeta-button:hover {
+    background-color: #e68900; 
+  
+  }
+
   div[itemprop="name"] {
-    margin: 1em 4em 1em 4em;
+    margin: 1em 2em 1em 2em;
     color: white;
     padding-top: 0.4em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
     padding-bottom: 0.4em;
     text-align: center;
     background-color: #ff7a00;;
@@ -503,16 +523,6 @@
     text-align: center;
   }
 
-
-.tarjeta-button{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 5px;
-  width: 100%;
-  border: none;
-  
-}
 .fa-solid,.fas {
   color: #f5873d;
   cursor: pointer;
@@ -1040,7 +1050,6 @@ button{
   #root .ul-tarjeta{
     display: flex;
     justify-content: space-evenly;
-    padding-inline-start: 0;
     flex-wrap: wrap;
     }
   
@@ -1055,11 +1064,11 @@ button{
     height: auto;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     background-color: rgba(255, 255, 255, 0.8);
-    max-width: 350px;
+    max-width: 200px;
     flex-direction: column;
     padding: 20px;
-    font-size: 1.1em;
-    margin: 0 0 16px;
+    font-size: 0.8em;
+    margin: 16px;
     color: #1e1e1e;
     text-align: left;
     line-height: 1.5em;
@@ -1119,5 +1128,28 @@ button{
     padding-top: 1em;
     padding-right: 10px;
   }
+  }
+  
+
+  /*Paginación*/
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #ff7a00;
+    color: #fff;
+    font-weight: bold;
   }
   

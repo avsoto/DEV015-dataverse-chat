@@ -2,6 +2,13 @@ import dataFunctions from "../lib/dataFunctions.js";
 import { navigateTo } from "../router.js";
 
 export const Cards = () => {
+  const petsPerPage = 6;
+  let currentPage = 1;
+
+  const petsList = dataFunctions.showPets();
+
+  const totalPages = Math.ceil(petsList.length / petsPerPage);
+
   // Función para calcular la edad en formato adecuado
   const getAgeDisplay = (years, months) => {
     const totalMonths = (years * 12) + months;
@@ -19,16 +26,12 @@ export const Cards = () => {
           <img class="tarjeta-img" src="${pet.imageUrl}" alt="${pet.id}">
         </div>
         <div itemprop="name">${pet.name}</div>
-        <div itemprop="description">${pet.shortDescription}</div>
-        <div itemprop="age"><strong>Edad:</strong> ${ageDisplay}</div>
-        <div itemprop="gender"><strong>Género:</strong> ${pet.facts.gender}</div>
-        <div itemprop="breed"><strong>Raza:</strong> ${pet.facts.breed}</div>
-        <div itemprop="size"><strong>Tamaño:</strong> ${pet.facts.size}</div>
-        <div itemprop="temperament"><strong>Comportamiento:</strong> ${pet.facts.temperament}</div>
+        <div itemprop="age"><i class="fa-solid fa-clock"></i><strong> Edad:</strong> ${ageDisplay}</div>
+        <div itemprop="gender"><i class="fa-solid fa-venus-mars"></i><strong> Género:</strong> ${pet.facts.gender}</div>
+        <div itemprop="breed"><i class="fa-solid fa-bone"></i><strong> Raza:</strong> ${pet.facts.breed}</div>
+        <div itemprop="size"><i class="fa-solid fa-dog"></i><strong> Tamaño:</strong> ${pet.facts.size}</div>
         <div class="content-tarjeta-button">
-        <button class="tarjeta-button">
-          <i class="fa-sharp-duotone fa-solid fa-comment fa-beat-fade fa-3x""></i>
-        </button>
+          <button class="tarjeta-button">Chatea conmigo</button>
         </div>
       </li>
     `;
@@ -36,8 +39,6 @@ export const Cards = () => {
 
   // Función para manipular el DOM e insertar las mascotas
   const renderPets = () => {
-    // Obtener la lista de mascotas
-    const petsList = dataFunctions.showPets();
 
     // Generar HTML de las mascotas
     const petsHTML = petsList.map(createPetHTML).join('');
@@ -45,35 +46,89 @@ export const Cards = () => {
     // Manipular el DOM
     const petsContainer = document.getElementById('pets-container');
     if (petsContainer) {
+      petsContainer.innerHTML = '';
+      
       const ul = document.createElement("ul");
       ul.className = "ul-tarjeta";
-      ul.innerHTML = petsHTML;
+
+      // Calcular el rango de mascotas para la página actual
+      const startIndex = (currentPage - 1) * petsPerPage;
+      const endIndex = startIndex + petsPerPage;
+      const petsToRender = petsList.slice(startIndex, endIndex);
+
+      ul.innerHTML = petsToRender.map(createPetHTML).join('');
+
       petsContainer.appendChild(ul);
 
       // Añadir eventos a los botones de cada tarjeta
       document.querySelectorAll('.tarjeta-button').forEach(button => {
         button.addEventListener('click', (event) => {
           const petId = event.target.closest('.tarjeta').querySelector('img').alt; // Suponiendo que el alt es el ID
-          console.log('CARDS.JS: Button Cards:' + petId);
           if (petId) {
             navigateTo('/individualChat', { id: petId });
-            //console.error('CARDS.JS: Se encontró.');
           } else {
             console.error('CARDS.JS: No se encontró el ID de la mascota.');
           }
         });
       });
     }
+
+    renderPagination();
+
+  };
+
+  // Función para renderizar los controles de paginación
+  const renderPagination = () => {
+    const paginationContainer = document.getElementById('pagination-container');
+    if (paginationContainer) {
+      paginationContainer.innerHTML = '';
+
+      // Botón "Anterior"
+      if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Anterior';
+        prevButton.addEventListener('click', () => {
+          currentPage--;
+          renderPets();
+        });
+        paginationContainer.appendChild(prevButton);
+      }
+
+      // Botones de número de página
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        if (i === currentPage) {
+          pageButton.classList.add('active'); // Marcar la página actual
+        }
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderPets();
+        });
+        paginationContainer.appendChild(pageButton);
+      }
+
+      // Botón "Siguiente"
+      if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Siguiente';
+        nextButton.addEventListener('click', () => {
+          currentPage++;
+          renderPets();
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+    }
   };
 
   // Retornar el HTML estático del componente de tarjetas
   const staticHTML = `
-    <!-- Desktop Tarjetas -->
     <section class="mascotas-container" id="tarjetas-section">        
       <section class="mascotas-tarjetas">
         <h2 class="nuestras-mascotas">
           <span>Our pets</span>
-          <p>All our pets come with a gift kit that includes: bath, bed, cookies, Wuf collar, ID tag, clothing, spa session, identification microchip, flea prevention, and much more!</p>
+          <p>Welcome a special friend into your life and enjoy a love-filled starter kit: a cozy bed, tasty treats, Wuf collar and microchip! 
+          <strong>Everything you need to start your new journey together!</strong></p>
           <p class="numeroAdoptados"></p>
         </h2>
         <div class="mascotas-barra">
@@ -127,7 +182,9 @@ export const Cards = () => {
           </div>
         </div>
         <div id="pets-container">
-          <!-- Aquí se insertarán las mascotas dinámicamente -->
+        </div>
+
+        <div id="pagination-container" class="pagination">
         </div>
       </section> 
     </section>

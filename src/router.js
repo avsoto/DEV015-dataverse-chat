@@ -18,10 +18,12 @@ export const setRoutes = (routes) => {
 };
 
 export const renderView = (pathname, props = {}) => {
+  console.log("Rendering view for:", pathname);
   rootEl.innerHTML = ''; 
   
   const view = ROUTES[pathname];
   if (!view) {
+    console.error("Route not found, redirecting to 404");
     navigateTo("/404");
     return;
   } 

@@ -15,7 +15,7 @@ const petsData = [
         "months": 2
       },
       "gender": "Macho",
-      "breed": "Labrador Retriever",
+      "breed": "Labrador",
       "size": "Grande",
       "temperament": "Enérgico"
     },
@@ -261,7 +261,7 @@ const petsData = [
         "months": 10
       },
       "gender": "Macho",
-      "breed": "Labrador Retriever",
+      "breed": "Labrador",
       "size": "Pequeño",
       "temperament": "Travieso"
     },

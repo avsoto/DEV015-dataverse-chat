@@ -12,11 +12,6 @@ export function individualChat(props) {
   // Añadir la barra de navegación
   individualChatView.appendChild(Nav());
 
-  /*const mainElement = document.createElement("main");
-  mainElement.classList.add("chat-main");
-  individualChatView.appendChild(mainElement);
-  mainElement.appendChild(ChatIndividual(props));*/
-
   const sectionChat = document.createElement("section");
   sectionChat.classList.add("section-p2");
   sectionChat.id = "banner";
